@@ -255,22 +255,7 @@ padding:20px;
 
 </div>
 
-</header>
-
-<div style="
-max-width:800px;
-margin:30px auto;
-padding:0 20px;
-">
-
-<input
-id="toolSearch"
-placeholder="🔍 Rechner suchen ..."
-onkeyup="searchTools()">
-
-</div>
-
-<div class="menu">
+<header>
 
 <a
 href="https://simonfischer1.github.io/hub/"
@@ -298,8 +283,31 @@ class="logo">
 
 </header>
 
+<div style="
+max-width:800px;
+margin:30px auto;
+padding:0 20px;
+">
+
+<input
+id="toolSearch"
+placeholder="🔍 Rechner suchen ..."
+onkeyup="searchTools()">
+
+</div>
+
+<div class="menu">
 
 
+<div class="card" onclick="showPage('besteck')">
+
+<div class="icon">🧭</div>
+
+<h2>Besteckrechnung</h2>
+
+<p>Mittelbreite & Vergrößerte Breite</p>
+
+</div>
 
 
 <div class="card" onclick="showPage('grosskreis')">
@@ -1357,7 +1365,7 @@ card.innerText.toLowerCase();
 
 if(text.includes(input)){
 
-card.style.display="block";
+card.style.display="";
 
 }
 else{
