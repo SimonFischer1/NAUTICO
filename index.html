@@ -409,11 +409,37 @@ Ergebnis erscheint hier
 ← Zurück
 </button>
 
-<h1>🌐 UTC Zeiten</h1>
+<h1>🌐 UTC Rechner</h1>
 
-<p>
-Berechnung folgt später
-</p>
+<br>
+
+<label>Datum & Uhrzeit (Ortszeit)</label>
+<input id="localTime" type="datetime-local">
+
+<br><br>
+
+<label>Zeitzonenabweichung zu UTC</label>
+<input id="utcOffset" type="number" value="2">
+
+<br><br>
+
+<button class="back-btn" onclick="calcUTC()">
+Berechnen
+</button>
+
+<div
+id="utcResult"
+style="
+margin-top:30px;
+padding:20px;
+border-radius:15px;
+background:rgba(255,255,255,.05);
+line-height:2;
+">
+
+Ergebnis erscheint hier
+
+</div>
 
 </div>
 
@@ -779,7 +805,55 @@ km.toFixed(2)
 
 }
 
+function calcUTC(){
 
+let time =
+document.getElementById("localTime").value;
+
+let offset =
+parseFloat(
+document.getElementById("utcOffset").value
+);
+
+if(
+!time ||
+isNaN(offset)
+){
+
+document.getElementById("utcResult").innerHTML =
+"Bitte alle Werte eintragen.";
+
+return;
+
+}
+
+let localDate =
+new Date(time);
+
+let utcDate =
+new Date(
+localDate.getTime()
+-
+(offset*60*60*1000)
+);
+
+document.getElementById("utcResult").innerHTML =
+
+"<b>UTC:</b><br>"
++
+utcDate.toUTCString()
+
++
+
+"<br><br><b>ISO:</b><br>"
++
+utcDate.toISOString();
+
+}
+
+
+
+ 
  
 function goHome(){
 
